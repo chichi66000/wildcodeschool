@@ -18,11 +18,14 @@ function getAllArgonautes () {
             // console.log(data.argonautes)
             let list = data.argonautes;
             let argonautes = []
-            for (let i=0; i< list.length; i++) {
-                argonautes.push(list[i].nom)
-            }
-            localStorage.setItem('argonautes', JSON.stringify(argonautes));
+            // console.log(list);
+            // for (let i=0; i< list.length; i++) {
+            //     argonautes.push(list[i].nom)
+            // }
+            localStorage.setItem('salut', JSON.stringify('hi'))
+            localStorage.setItem('argonautes', JSON.stringify(list));
             showArgonautes()
+            deleteArgonaute()
     })
     .catch(err=> {
         console.log(err);
@@ -30,19 +33,20 @@ function getAllArgonautes () {
     })
 }
 
-
 // afficher la list des argonautes avec localStorage
 function showArgonautes () {
     let noms = JSON.parse(localStorage.getItem('argonautes')) ;
     // replace ancien liste et update nouvelle liste
     const newList = document.createElement("div");
-    newList.setAttribute('class', 'd-flex flex-column-reverse flex-sm-row justify-content-between flex-wrap border border-warning rounded p-1 m-1 bg-light')
+    newList.setAttribute('class', ' d-flex flex-column-reverse flex-sm-row justify-content-between flex-wrap border border-warning rounded p-1 m-1 bg-light')
     
     for (let y =  0; y < noms.length; y++) {
-        let p = document.createElement('p');
-        p.setAttribute('class', 'text-break mx-1 p-2');
-        p.textContent = noms[y];
-        newList.appendChild(p);
+        let a = document.createElement('a');
+        a.setAttribute('class', 'equipage text-break mx-1 p-2 btn');
+        a.setAttribute('id', noms[y]._id);
+        // a.addEventListener('click', deleteArgonaute())
+        a.textContent = noms[y].nom;
+        newList.appendChild(a);
     }
     let listArgonautes = document.getElementById('list');
     const childDiv = listArgonautes.firstChild;
@@ -53,7 +57,7 @@ function showArgonautes () {
 let btn = document.getElementById('btn');
 btn.addEventListener('click', (e) => {
     e.preventDefault();
-    swal("Hello world!");
+    
     // récupérer le champs de input name
     let error = document.getElementById('error');
     let input = document.getElementById('name')
@@ -86,7 +90,7 @@ btn.addEventListener('click', (e) => {
             if(response.status === 200) {
                 // recharger la list
                 getAllArgonautes();
-                showArgonautes();
+                // showArgonautes();
             }
         })
         // reset input
@@ -112,10 +116,57 @@ btn.addEventListener('click', (e) => {
     }
 })
 
+
+// funtion delete One Argonaute
+function deleteArgonaute () {
+    // e.preventDefault();
+    // swal("delete " , id);
+    let equipage = document.querySelectorAll('a.equipage')
+    
+    equipage.forEach( function (item) {
+        item.addEventListener('click', (e) => {
+            let id = e.target.id;
+            // console.log(e.target.textContent);
+            // console.log(e.target.id);
+            swal({
+                title: "Vous voulez supprimer cet argonaute?",
+                // text: "Once deleted, you will not be able to recover this imaginary file!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                    //   send id to server backend to
+                        fetch('/argonaute', {
+                            method: 'DELETE',
+                            body: new URLSearchParams({
+                                'id': id
+                            }),
+                        })
+                        .then( (response) => {
+                            if(response.status === 200) {
+                                getAllArgonautes()
+                            }
+                        })
+                        .catch((error) => {
+                            console.log(error);
+                        })
+                    }
+                }) 
+            
+        })
+        
+    })
+    // console.log("delete ");
+    // event.preventDefault();
+}
+
+
 document.addEventListener("DOMContentLoaded", () => {
     getAllArgonautes();
-    
 });
+
 
 // récupérer la liste auomatique chaque 30s
 setInterval(function() {
