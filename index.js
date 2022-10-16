@@ -35,7 +35,7 @@ app.use(helmet.contentSecurityPolicy({
     "default-src": ["'self'", "https://www.wildcodeschool.com/assets/logo_main-e4f3f744c8e717f1b7df3858dce55a86c63d4766d5d9a7f454250145f097c2fe.png"],
     "script-src": ["'self'",  "'unsafe-inline'", "'unsafe-eval'"],
     "style-src": ["'self'", "'unsafe-inline'", "'unsafe-eval'", " https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css "],
-    "img-src": ["https://www.wildcodeschool.com/assets/logo_main-e4f3f744c8e717f1b7df3858dce55a86c63d4766d5d9a7f454250145f097c2fe.png", "Content Security Policy: Les paramètres de la page ont empêché le chargement d’une ressource à https://wildcodeschool-khanhchi.herokuapp.com/favicon.ico"]
+    "img-src": ["https://www.wildcodeschool.com/assets/logo_main-e4f3f744c8e717f1b7df3858dce55a86c63d4766d5d9a7f454250145f097c2fe.png", "     https://wildcodeschool-khanhchi.herokuapp.com/favicon.ico"]
     },
   }));
 
