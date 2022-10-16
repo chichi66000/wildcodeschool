@@ -18,7 +18,7 @@ app.use(helmet.contentSecurityPolicy({
     useDefaults: true,
     directives: {
     "default-src": ["'self'", "https://www.wildcodeschool.com/assets/logo_main-e4f3f744c8e717f1b7df3858dce55a86c63d4766d5d9a7f454250145f097c2fe.png"],
-    "script-src": ["'self'",  "'unsafe-inline'", "'unsafe-eval'"],
+    "script-src": ["'self'",  "'unsafe-inline'", "'unsafe-eval'", "https://unpkg.com/sweetalert/dist/sweetalert.min.js"],
     "style-src": ["'self'", "'unsafe-inline'", "'unsafe-eval'", " https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css "],
     "img-src": ["'self'", "https://www.wildcodeschool.com/assets/logo_main-e4f3f744c8e717f1b7df3858dce55a86c63d4766d5d9a7f454250145f097c2fe.png", "https://res.cloudinary.com/dtu1ahoyv/image/upload/v1665926003/kisspng-letter-k-logo-font-colorful-letters-k-5a687e2a3ff277.5103107815167974822619_gftfqx.png"]
     },

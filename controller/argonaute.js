@@ -40,4 +40,21 @@ exports.getAllArgonautes = (req, res, next) => {
         })
 }
 
+exports.deleteArgonaute = (req, res, next) => {
+    let id = req.body.id;
+    Argonaute.findOne({_id: id})
+    .then((argonaute) => {
+        Argonaute.deleteOne({_id: id})
+        .then(() => res.status(200).json({message: 'Supprimé'}))
+        .catch((error) =>{
+            console.log(error);
+            res.status(404).json({message: 'Impossible supprimé ce argonaute'})
+        })
+    })
+    .catch(err => {
+        console.log(err);
+        return res.status(400).json("Argonaute pas trouvé")
+    })
+}
+
 

@@ -53,6 +53,7 @@ function showArgonautes () {
 let btn = document.getElementById('btn');
 btn.addEventListener('click', (e) => {
     e.preventDefault();
+    swal("Hello world!");
     // récupérer le champs de input name
     let error = document.getElementById('error');
     let input = document.getElementById('name')
