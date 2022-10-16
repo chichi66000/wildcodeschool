@@ -31,18 +31,16 @@ function getAllArgonautes () {
 }
 
 
-// afficher la list des argonautes 
+// afficher la list des argonautes avec localStorage
 function showArgonautes () {
     let noms = JSON.parse(localStorage.getItem('argonautes')) ;
-    
     // replace ancien liste et update nouvelle liste
     const newList = document.createElement("div");
     newList.setAttribute('class', 'd-flex flex-column-reverse flex-sm-row justify-content-between flex-wrap ')
-    // newList.setAttribute('style', 'overflow-y: scroll;')
+    
     for (let y =  0; y < noms.length; y++) {
         let p = document.createElement('p');
         p.setAttribute('class', 'text-break mx-1 p-2');
-        // p.setAttribute('style', '');
         p.textContent = noms[y];
         newList.appendChild(p);
     }
