@@ -1,3 +1,6 @@
+body {
+    background-color: #feffd5;
+}
 @media screen and (max-width: 576px) {
     #list > div> p {
         width: 100% !important;

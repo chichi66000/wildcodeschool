@@ -36,7 +36,7 @@ function showArgonautes () {
     let noms = JSON.parse(localStorage.getItem('argonautes')) ;
     // replace ancien liste et update nouvelle liste
     const newList = document.createElement("div");
-    newList.setAttribute('class', 'd-flex flex-column-reverse flex-sm-row justify-content-between flex-wrap ')
+    newList.setAttribute('class', 'd-flex flex-column-reverse flex-sm-row justify-content-between flex-wrap border border-warning rounded p-1 m-1 bg-light')
     
     for (let y =  0; y < noms.length; y++) {
         let p = document.createElement('p');
