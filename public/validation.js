@@ -119,6 +119,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // récupérer la liste auomatique chaque 30s
-// setInterval(function() {
-//     getAllArgonautes();
-// }, 10000)
+setInterval(function() {
+    getAllArgonautes();
+}, 10000)
