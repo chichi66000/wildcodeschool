@@ -1,0 +1,10 @@
+@media screen and (max-width: 576px) {
+    #list > div> p {
+        width: 100% !important;
+    }
+}
+@media screen and (min-width: 577px) {
+    #list > div> p {
+        width: 30% !important;
+    }
+}
